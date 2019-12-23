@@ -40,12 +40,3 @@ class ProgressPercentage(object):
                 print("\r%s  %s / %s  (%.2f%%)" % (self._filename, self._seen_so_far, self._size,percentage),end='',flush=True)
             else:
                 print()
-
-s3 = boto3.client('s3')
-s3.upload_file("Linux_Academy.html", "qwuamz-upload-test", "Linux_Academy.html", Callback=ProgressPercentage("Linux_Academy.html"))
-s3.download_file("qwuamz-upload-test", "Linux_Academy.html", "Linux_Academy.html", Callback=ProgressPercentage("qwuamz-upload-test/Linux_Academy.html"))
-
-#s3 = boto3.resource('s3')
-#object_summary = s3.ObjectSummary('qwuamz-upload-test','Linux_Academy.html')
-#print(object_summary)
-#print(boto3.resource('s3').Bucket('qwuamz-upload-test').Object('Linux_Academy.html').content_length)
